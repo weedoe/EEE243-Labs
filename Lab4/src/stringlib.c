@@ -67,3 +67,31 @@ void pad_left(char a[], int n) {
     b[n] = '\0';
     printf("%s\n", b);
 }
+//end pad_left
+//start center
+void center(char a[], int n){
+    int length = count_chars(a);
+    int spaces = n - length;
+    int center = spaces / 2;
+    char b[n + 1]; // +1 for the null terminator
+    int i;
+    for (i = 0; i < center; i++) {
+        if (center % 2 == 1){
+            b[i] = ' ';
+        }
+        else{
+            b[i] = ' ';
+            i++;
+        }
+    }
+    for (int j = 0; j < length; j++) {
+        b[i] = a[j];
+        i++;
+    }
+    for (int k = i; k <= n; k++) {
+        b[k] = ' ';
+    }
+    b[n] = '\0';
+    printf("%s\n", b);
+}
+//end center

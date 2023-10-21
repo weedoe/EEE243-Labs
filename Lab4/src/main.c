@@ -64,5 +64,15 @@ int main() {
             pad_left(test[0], n);
 
         }
+        if (choice == 5){
+            printf("Enter a string to center:\n");
+            char *test[0];
+            test[0] = malloc(sizeof(test));
+            scanf("%s", test[0]);
+            printf("Enter a number to center:\n");
+            int n;
+            scanf("%d", &n);
+            center(test[0], n);
+        }
     }
 }
