@@ -3,6 +3,7 @@
 //
 #include "stringlib.h"
 #include <stdio.h>
+#include <ctype.h>
 //count_chars
 int count_chars(char a[]){
     int i = 0;
@@ -95,3 +96,51 @@ void center(char a[], int n){
     printf("%s\n", b);
 }
 //end center
+//start palindrome
+bool is_palindrome(char a[]){
+    int length = count_chars(a);
+    for (int i = 0; i < length; i++) {
+        a[i] = tolower(a[i]); // NOLINT(*-narrowing-conversions)
+    }
+    int i = 0;
+    int j = length - 1;
+    while (i < j){
+        if (a[i] != a[j]){
+            return false;
+        }
+        i++;
+        j--;
+    }
+    return true;
+}
+//end palindrome
+//start truncate
+void truncate(char a[], int n){
+    int length = count_chars(a);
+    if (length > n){
+        a[n] = '\0';
+    }
+    printf("%s\n", a);
+}
+//end truncate
+//start capitalize
+void capitalize(char a[]){
+    int length = count_chars(a);
+    for (int i = 0; i < length; i++) {
+        a[i] = tolower(a[i]); // NOLINT(*-narrowing-conversions)
+    }
+    a[0] = toupper(a[0]); // NOLINT(*-narrowing-conversions)
+    printf("%s\n", a);
+}
+//end capitalize
+//start capitalize_words
+void capitalize_words(char a[]){
+    int length = count_chars(a);
+    a[0] = toupper(a[0]); // NOLINT(*-narrowing-conversions)
+    for (int i = 0; i < length; i++){
+        if (a[i] == ' '){
+            a[i + 1] = toupper(a[i + 1]); // NOLINT(*-narrowing-conversions)
+        }
+    }
+    printf("%s\n", a);
+}

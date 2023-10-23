@@ -1,3 +1,5 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "cert-err34-c"
 #include <stdio.h>
 #include <stdlib.h>
 #include "stringlib.h"
@@ -73,6 +75,37 @@ int main() {
             int n;
             scanf("%d", &n);
             center(test[0], n);
+        }
+        if (choice == 6){
+            printf("Enter a string to check palindrome:\n");
+            char *test[0];
+            test[0] = malloc(sizeof(test));
+            scanf("%s", (test[0]));
+            printf("%d\n", is_palindrome(test[0]));
+        }
+        if (choice == 7){
+            printf("Enter a string to truncate:\n");
+            char *test[0];
+            test[0] = malloc(sizeof(test));
+            scanf("%s", test[0]);
+            printf("Enter a number to truncate to:\n");
+            int n;
+            scanf("%d", &n);
+            truncate(test[0], n);
+        }
+        if (choice == 8){
+            printf("Enter a string to capitalize first letter:\n");
+            char *test[0];
+            test[0] = malloc(sizeof(test));
+            scanf("%s", test[0]);
+            capitalize(test[0]);
+        }
+        if (choice == 9){
+            printf("Enter a string to capitalize words:\n");
+            char *test[0];
+            test[0] = malloc(sizeof(test));
+            scanf("%s", test[0]);
+            capitalize_words(test[0]); //end work for now, bugs to be fixed l8r
         }
     }
 }
