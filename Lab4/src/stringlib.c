@@ -17,7 +17,7 @@ int count_chars(char a[]){
 void trim_right(char a[]){
     int i = count_chars(a);
     while (a[i] == '\0'){
-        a[i] = '\n';
+        a[i-1] = '\n';
         i++;
         if (a[i] == '\0'){
             break;
@@ -29,27 +29,35 @@ void trim_right(char a[]){
 //start trim_left
 void trim_left(char a[]){
     int i = count_chars(a);
-    while (a[i] == '\0'){
-        a[i] = '\n';
-        i--;
-        if (a[i] == '\0'){
-            break;
+    for(int j = 0; j < i; j++){
+        if (a[j] == ' '){
+            j++;
+            if (a[j] != ' '){
+                for(int k = 0; k < i; k++){
+                a[k] = a[j];
+                j++;
+                }
+            }
         }
+        printf("%s", a);
     }
-    printf("%s", a);
 }
 //end trim_left
 //start pad_right
 void pad_right(char a[], int n){
     int i = count_chars(a);
-    for (int j = i; j <= n; j++){
+    for (int j = i; j < n; j++){
+        if (i == n){
+            printf("The string is already this length, exiting.");
+            break;
+        }
         a[j] = ' ';
-        if (j == n - 1){
+        if (count_chars(a) - 1 == n){
             a[j] = '\0';
         }
     }
 
-    printf("%s \n", a);
+    printf("%s", a);
     }
 //end pad_right
 //start pad_left4
@@ -66,7 +74,10 @@ void pad_left(char a[], int n) {
         i++;
     }
     b[n] = '\0';
-    printf("%s\n", b);
+    for(int k = 0; k < sizeof(b); k++){
+        a[k] = b[k];
+    }
+    printf("%s", a);
 }
 //end pad_left
 //start center
@@ -93,7 +104,10 @@ void center(char a[], int n){
         b[k] = ' ';
     }
     b[n] = '\0';
-    printf("%s\n", b);
+    for(int k = 0; k < sizeof(b); k++){
+        a[k] = b[k];
+    }
+    printf("%s", a);
 }
 //end center
 //start palindrome
@@ -120,7 +134,7 @@ void truncate(char a[], int n){
     if (length > n){
         a[n] = '\0';
     }
-    printf("%s\n", a);
+    printf("%s", a);
 }
 //end truncate
 //start capitalize
@@ -130,7 +144,7 @@ void capitalize(char a[]){
         a[i] = tolower(a[i]); // NOLINT(*-narrowing-conversions)
     }
     a[0] = toupper(a[0]); // NOLINT(*-narrowing-conversions)
-    printf("%s\n", a);
+    printf("%s", a);
 }
 //end capitalize
 //start capitalize_words
@@ -142,5 +156,5 @@ void capitalize_words(char a[]){
             a[i + 1] = toupper(a[i + 1]); // NOLINT(*-narrowing-conversions)
         }
     }
-    printf("%s\n", a);
+    printf("%s", a);
 }
