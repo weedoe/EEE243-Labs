@@ -1,3 +1,13 @@
+/**
+ *
+ *
+ *
+ *
+ */
+
+
+
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "cert-err34-c"
 #include <stdio.h>
@@ -192,16 +202,84 @@ int main() {
             }
         }
         if (choice == 8){
-            printf("Enter a string to capitalize first letter:\n");
-            char *test[0];
-            scanf("%s", test[0]);
-            capitalize(test[0]);
+            char test[] = "test";
+            char desired[] = "Test";
+            capitalize(test);
+            if(compareArrays(test, desired, 5)){
+                printf("\nTest case 1 passed.\n");
+            }
+            else{
+                printf("\nTest case 1 failed.\n\n");
+            }
         }
         if (choice == 9){
-            printf("Enter a string to capitalize words:\n");
-            char *test[0];
-            scanf("%s", test[0]);
-            capitalize_words(test[0]); //end work for now, bugs to be fixed l8r
+            char test[] = "test test test";
+            char desired[] = "Test Test Test";
+            capitalize_words(test); //end work for now, bugs to be fixed l8r
+            if(compareArrays(test, desired, 15)){
+                printf("\nTest case 1 passed.\n");
+            }
+            else{
+                printf("\nTest case 1 failed.\n\n");
+            }
         }
+       if (choice ==  10){
+              char test[] = "test";
+              char test2[]= "1234";
+              printf("%d\n", is_alpha(test));
+              if(is_alpha(test) == 1){
+                printf("Test case 1 passed.\n");
+              }
+              else{
+                printf("Test case 1 failed.\n");
+              }
+              printf("%d\n", is_alpha(test2));
+                if(is_alpha(test2) == 0){
+                    printf("Test case 2 passed.\n\n");
+                }
+                else{
+                    printf("Test case 2 failed.\n\n");
+                }
+       }
+         if (choice == 11){
+              printf("Enter a string to reverse:\n");
+              char test[] = "test";
+              char desired[] = "tset";
+              reverse(test);
+              if(compareArrays(test, desired, 4)){
+                printf("\nTest case 1 passed.\n");
+              }
+              else{
+                printf("\nTest case 1 failed.\n\n");
+              }
+         }
+            if (choice == 12){
+                char test[] = "test";
+                char c = 't';
+                printf("%d\n", count_occurrences(test, c));
+                if(count_occurrences(test, c) == 2){
+                    printf("Test case 1 passed.\n");
+                }
+                else{
+                    printf("Test case 1 failed.\n");
+                }
+            }
+            if (choice == 13){
+                char test[] = "test";
+                char c = 't';
+                char desired[] = "es";
+                delete_char(test, c);
+                if(compareArrays(test, desired, 2)){
+                    printf("\nTest case 1 passed.\n");
+                }
+                else{
+                    printf("\nTest case 1 failed.\n\n");
+                }
+            }
+            if (choice == 14){
+                printf("Exiting program...\n");
+                break;
+            }
     }
+    return 0;
 }

@@ -158,3 +158,61 @@ void capitalize_words(char a[]){
     }
     printf("%s", a);
 }
+//end capitalize_words
+//start is_alpha
+bool is_alpha(char a[]){
+    int length = count_chars(a);
+    for (int i = 0; i < length; i++){
+        if (isalpha(a[i]) == 0){
+            return false;
+        }
+    }
+    return true;
+}
+//end is_alpha
+//start reverse
+void reverse(char a[]){
+    int length = count_chars(a);
+    char b[length + 1];
+    int i = 0;
+    int j = length - 1;
+    while (i < length){
+        b[i] = a[j];
+        i++;
+        j--;
+    }
+    b[length] = '\0';
+    for(int k = 0; k < sizeof(b); k++){
+        a[k] = b[k];
+    }
+    printf("%s", a);
+}
+//end reverse
+//start count_occurrences
+int count_occurrences(char a[], char c){
+    int length = count_chars(a);
+    int count = 0;
+    for (int i = 0; i < length; i++){
+        if (a[i] == c){
+            count++;
+        }
+    }
+    return count;
+}
+//end count_occurrences
+//start delete_char
+void delete_char(char a[], char c){
+    int length = count_chars(a);
+    int i = 0;
+    int j = 0;
+    while (i < length){
+        if (a[i] != c){
+            a[j] = a[i];
+            j++;
+        }
+        i++;
+    }
+    a[j] = '\0';
+    printf("%s", a);
+}
+//end delete_char
