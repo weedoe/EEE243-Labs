@@ -1,11 +1,23 @@
-//
-// Created by William Paterson on 2023-10-18.
-//
-#include "stringlib.h"
+/**
+ * C file to make a library for all of the string functions prototyped in
+ * stringlib.h. This file contains the functions that are used to manipulate
+ * strings in main.c.
+ *
+ * Author: OCdt Paterson 30648
+ * Version: October 31st 2023
+ */
+#include "stringlib.h" //including prototype functions
 #include <stdio.h>
 #include <ctype.h>
 
-//count_chars
+/**
+ * This function counts the number of characters in a string and returns the
+ * number of characters.
+ *
+ * a[]: the string to be counted
+ * return: the number of characters in the string
+ */
+//start count_chars
 int count_chars(char a[]) {
     int i = 0;
     while (a[i] != '\0') {
@@ -15,6 +27,13 @@ int count_chars(char a[]) {
 }
 
 //end count_chars
+
+/**
+ * This function removes any space characters from the right end of a string.
+ *
+ * a[]: the string to be trimmed
+ */
+
 //start trim_right
 void trim_right(char a[]) {
     int i = count_chars(a);
@@ -29,6 +48,13 @@ void trim_right(char a[]) {
 }
 
 //end trim_right
+
+/**
+ * This function removes any space characters from the left end of a string.
+ *
+ * a[]: the string to be trimmed
+ */
+
 //start trim_left
 void trim_left(char a[]) {
     int i = count_chars(a);
@@ -47,6 +73,16 @@ void trim_left(char a[]) {
 }
 
 //end trim_left
+
+/**
+ * This function adds extra spaces at the right end of a string to make it n
+ * characters long. If the string is already n characters or longer, does
+ * nothing.
+ *
+ * a[]: the string to be padded
+ * n: the number of characters the string should be
+ */
+
 //start pad_right
 void pad_right(char a[], int n) {
     int i = count_chars(a);
@@ -65,6 +101,16 @@ void pad_right(char a[], int n) {
 }
 
 //end pad_right
+
+/**
+ * This function adds extra spaces at the left end of a string to make it n
+ * characters long. If the string is already n characters or longer, does
+ * nothing.
+ *
+ * a[]: the string to be padded
+ * n: the number of characters the string should be
+ */
+
 //start pad_left4
 void pad_left(char a[], int n) {
     int length = count_chars(a);
@@ -86,6 +132,17 @@ void pad_left(char a[], int n) {
 }
 
 //end pad_left
+
+/**
+ * This function centers a string by adding spaces to the left and right to
+ * bring it to the length n. If the string is already of the specified length
+ * or longer, does not change the string. If an odd number of spaces have to
+ * be added, puts the extra blank on the right.
+ *
+ * a[]: the string to be centered
+ * n: the number of characters the string should be
+ */
+
 //start center
 void center(char a[], int n) {
     int length = count_chars(a);
@@ -115,6 +172,14 @@ void center(char a[], int n) {
     printf("%s", a);
 }
 //end center
+
+/**
+ * This function returns true if a string is a palindrome, false otherwise.
+ *
+ * a[]: the string to be checked
+ * return: true if the string is a palindrome, false otherwise
+ */
+
 //start palindrome
 bool is_palindrome(char a[]) {
     int length = count_chars(a);
@@ -134,6 +199,14 @@ bool is_palindrome(char a[]) {
 }
 
 //end palindrome
+
+/**
+ * This function returns true if a string is a palindrome, false otherwise.
+ *
+ * a[]: the string to be checked
+ * return: true if the string is a palindrome, false otherwise
+ */
+
 //start truncate
 void truncate(char a[], int n) {
     int length = count_chars(a);
@@ -144,6 +217,14 @@ void truncate(char a[], int n) {
 }
 
 //end truncate
+
+/**
+ * This function returns true if a string is a palindrome, false otherwise.
+ *
+ * a[]: the string to be checked
+ * return: true if the string is a palindrome, false otherwise
+ */
+
 //start capitalize
 void capitalize(char a[]) {
     int length = count_chars(a);
@@ -155,6 +236,14 @@ void capitalize(char a[]) {
 }
 
 //end capitalize
+
+/**
+ * This function returns true if a string is a palindrome, false otherwise.
+ *
+ * a[]: the string to be checked
+ * return: true if the string is a palindrome, false otherwise
+ */
+
 //start capitalize_words
 void capitalize_words(char a[]) {
     int length = count_chars(a);
@@ -167,6 +256,14 @@ void capitalize_words(char a[]) {
     printf("%s", a);
 }
 //end capitalize_words
+
+/**
+ * This function returns true if a string is a palindrome, false otherwise.
+ *
+ * a[]: the string to be checked
+ * return: true if the string is a palindrome, false otherwise
+ */
+
 //start is_alpha
 bool is_alpha(char a[]) {
     int length = count_chars(a);
@@ -179,6 +276,14 @@ bool is_alpha(char a[]) {
 }
 
 //end is_alpha
+
+/**
+ * This function returns true if a string is a palindrome, false otherwise.
+ *
+ * a[]: the string to be checked
+ * return: true if the string is a palindrome, false otherwise
+ */
+
 //start reverse
 void reverse(char a[]) {
     int length = count_chars(a);
@@ -198,6 +303,14 @@ void reverse(char a[]) {
 }
 
 //end reverse
+
+/**
+ * This function returns true if a string is a palindrome, false otherwise.
+ *
+ * a[]: the string to be checked
+ * return: true if the string is a palindrome, false otherwise
+ */
+
 //start count_occurrences
 int count_occurrences(char a[], char c) {
     int length = count_chars(a);
@@ -211,6 +324,14 @@ int count_occurrences(char a[], char c) {
 }
 
 //end count_occurrences
+
+/**
+ * This function returns true if a string is a palindrome, false otherwise.
+ *
+ * a[]: the string to be checked
+ * return: true if the string is a palindrome, false otherwise
+ */
+
 //start delete_char
 void delete_char(char a[], char c) {
     int length = count_chars(a);
@@ -227,3 +348,4 @@ void delete_char(char a[], char c) {
     printf("%s", a);
 }
 //end delete_char
+//end stringlib.c
