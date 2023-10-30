@@ -3,7 +3,8 @@
  * accomplished by taking a numerical input from the user and running the
  * corresponding preset test case. The user can exit the program by entering 14.
  * A selection menu system is used to speed up the testing of every module.
- * The result of the tests are printed above the menu.
+ * The result of the tests are printed above the menu. Each test is run via a
+ * function.
  *
  * Author: OCdt Paterson 30648
  * Version: October 31st 2023
@@ -18,6 +19,33 @@
 //function declaration
 bool compare_arrays(const char *generated, const char *desired, int size);
 
+void test_count_chars();
+
+void test_trim_right();
+
+void test_trim_left();
+
+void test_pad_right();
+
+void test_pad_left();
+
+void test_center();
+
+void test_is_palindrome();
+
+void test_truncate();
+
+void test_capitalize();
+
+void test_capitalize_words();
+
+void test_is_alpha();
+
+void test_reverse();
+
+void test_count_occurrences();
+
+void test_delete_char();
 
 /**
  * This function is the main function of the program. It takes a numerical input
@@ -46,234 +74,60 @@ int main() {
         scanf("%d", &choice); //takes user choice for test
         //choice 0, counting characters in string
         if (choice == 0) {
-            char test[] = "test"; //initializing test array
-            char test2[] = "test test";
-            printf("%d\n", count_chars(test));
-            if (count_chars(test) == 4) { //checks for correct return value
-                //(4)
-                printf("Test case 1 passed.\n");
-            } else { //prints failed if return value is incorrect (not 4)
-                printf("Test case 1 failed.\n");
-            }
-            printf("%d\n", count_chars(test2));
-            if (count_chars(test2) == 9) {
-                printf("Test case 2 passed.\n");
-            } else {
-                printf("Test case 2 failed.\n");
-            }
-            printf("\n");
+            test_count_chars(); //runs test function
         }
         //choice 1, trimming spaces off right of string
         if (choice == 1) {
-            char test[] = "test ";
-            char desired[] = "test";
-            trim_right(test); //runs function
-            //below runs compare function initialized above if (1) then passed
-            //else (0), then failed
-            if (compare_arrays(test, desired, 3)) {
-                printf("Test case 1 passed.\n");
-            } else {
-                printf("Test case 1 failed.\n");
-            }
-            char test2[] = "test test  ";
-            char desired2[] = "test test ";
-            trim_right(test2);
-            if (compare_arrays(test2, desired2, 8)) {
-                printf("Test case 2 passed.\n\n");
-            } else {
-                printf("Test case 2 failed.\n\n");
-            }
+            test_trim_right();
         }
         //choice 2, trimming spaces off left of string
         if (choice == 2) {
-            char test[] = " test";
-            char desired[] = "test";
-            trim_left(test);
-            if (compare_arrays(test, desired, 3)) {
-                printf("\nTest case 1 passed.\n");
-            } else {
-                printf("\nTest case 1 failed.\n");
-            }
-            char test2[] = " test test";
-            char desired2[] = "test test";
-            trim_left(test2);
-            if (compare_arrays(test2, desired2, 8)) {
-                printf("\nTest case 2 passed.\n\n");
-            } else {
-                printf("\nTest case 2 failed.\n\n");
-            }
+            test_trim_left();
         }
         //choice 3, padding spaces to right of string
         if (choice == 3) {
-            char test[] = "test";
-            char test2[] = "test";
-            char desired[] = "test  ";
-            char desired2[] = "test";
-            int n = 6;
-            int n2 = 4;
-            pad_right(test, n);
-            if (compare_arrays(test, desired, 7)) {
-                printf("\nTest case 1 passed.\n");
-            } else {
-                printf("\nTest case 1 failed.\n");
-            }
-            pad_right(test2, n2);
-            if (compare_arrays(test2, desired2, 5)) {
-                printf("\nTest case 2 passed.\n\n");
-            } else {
-                printf("\nTest case 2 failed.\n\n");
-            }
-
+            test_pad_right();
         }
         //choice 4, padding spaces to left of string
         if (choice == 4) {
-            char test[] = "test";
-            char test2[] = "test";
-            char desired[] = "  test";
-            char desired2[] = "test";
-            int n = 6;
-            int n2 = 4;
-            pad_left(test, n);
-            if (compare_arrays(test, desired, 7)) {
-                printf("\nTest case 1 passed.\n");
-            } else {
-                printf("\nTest case 1 failed.\n");
-            }
-            pad_left(test2, n2);
-            if (compare_arrays(test2, desired2, 5)) {
-                printf("\nTest case 2 passed.\n\n");
-            } else {
-                printf("\nTest case 2 failed.\n\n");
-            }
-
+            test_pad_left();
         }
         //choice 5, centering string or adding extra space to right side if
         //string is odd.
         if (choice == 5) {
-            char test[] = "test";
-            char test2[] = "test";
-            char desired[] = " test ";
-            char desired2[] = " test  ";
-            int n = 6;
-            int n2 = 7;
-            center(test, n);
-            if (compare_arrays(test, desired, 7)) {
-                printf("\nTest case 1 passed.\n");
-            } else {
-                printf("\nTest case 1 failed.\n");
-            }
-            center(test2, n2);
-            if (compare_arrays(test2, desired2, 8)) {
-                printf("\nTest case 2 passed.\n\n");
-            } else {
-                printf("\nTest case 2 failed.\n\n");
-            }
-
+            test_center();
         }
         //choice 6, checking if string is a palindrome
         if (choice == 6) {
-            char test[] = "RADar";
-            printf("%d", is_palindrome(test));
-            if (is_palindrome(test) == 1) {
-                printf("\nTest case 1 passed.\n\n");
-            } else {
-                printf("\nTest case 1 failed.\n\n");
-            }
+            test_is_palindrome();
         }
         //choice 7, truncating string to n characters
         if (choice == 7) {
-            char test[] = "test";
-            char desired[] = "te";
-            char test2[] = "test";
-            char desired2[] = "test";
-            int n = 2;
-            int n2 = 4;
-            truncate(test, n);
-            if (compare_arrays(test, desired, 3)) {
-                printf("\nTest case 1 passed.\n");
-            } else {
-                printf("\nTest case 1 failed.\n");
-            }
-            truncate(test2, n2);
-            if (compare_arrays(test2, desired2, 5)) {
-                printf("\nTest case 2 passed.\n\n");
-            } else {
-                printf("\nTest case 2 failed.\n\n");
-            }
+            test_truncate();
         }
         //choice 8, capitalizing first letter of string
         if (choice == 8) {
-            char test[] = "test";
-            char desired[] = "Test";
-            capitalize(test);
-            if (compare_arrays(test, desired, 5)) {
-                printf("\nTest case 1 passed.\n\n");
-            } else {
-                printf("\nTest case 1 failed.\n\n");
-            }
+            test_capitalize();
         }
         //choice 9, capitalizing first letter of every word in string
         if (choice == 9) {
-            char test[] = "test test test";
-            char desired[] = "Test Test Test";
-            capitalize_words(test);
-            if (compare_arrays(test, desired, 15)) {
-                printf("\nTest case 1 passed.\n\n");
-            } else {
-                printf("\nTest case 1 failed.\n\n");
-            }
+            test_capitalize_words();
         }
         //choice 10, checking if string is alphabetic
         if (choice == 10) {
-            char test[] = "test";
-            char test2[] = "1234";
-            printf("%d\n", is_alpha(test));
-            if (is_alpha(test) == 1) {
-                printf("Test case 1 passed.\n");
-            } else {
-                printf("Test case 1 failed.\n");
-            }
-            printf("%d\n", is_alpha(test2));
-            if (is_alpha(test2) == 0) {
-                printf("Test case 2 passed.\n\n");
-            } else {
-                printf("Test case 2 failed.\n\n");
-            }
+            test_is_alpha();
         }
         //choice 11, reversing string
         if (choice == 11) {
-            printf("Enter a string to reverse:\n");
-            char test[] = "test";
-            char desired[] = "tset";
-            reverse(test);
-            if (compare_arrays(test, desired, 4)) {
-                printf("\nTest case 1 passed.\n\n");
-            } else {
-                printf("\nTest case 1 failed.\n\n");
-            }
+            test_reverse();
         }
         //choice 12, counting occurrences of character in string
         if (choice == 12) {
-            char test[] = "test";
-            char c = 't';
-            printf("%d\n", count_occurrences(test, c));
-            if (count_occurrences(test, c) == 2) {
-                printf("Test case 1 passed.\n\n");
-            } else {
-                printf("Test case 1 failed.\n\n");
-            }
+            test_count_occurrences();
         }
         //choice 13, deleting all occurrences of character in string
         if (choice == 13) {
-            char test[] = "test";
-            char c = 't'; //character to delete
-            char desired[] = "es";
-            delete_char(test, c);
-            if (compare_arrays(test, desired, 2)) {
-                printf("\nTest case 1 passed.\n\n");
-            } else {
-                printf("\nTest case 1 failed.\n\n");
-            }
+            test_delete_char();
         }
         //choice 14, exiting program
         if (choice == 14) {
@@ -301,4 +155,274 @@ bool compare_arrays(const char *generated, const char *desired, int size) {
     }
     return true; //flag true for matching array
 }
+
+/**
+ * This function tests the count_chars function.
+ */
+void test_count_chars() {
+    char test[] = "test"; //initializing test array
+    char test2[] = "test test";
+    printf("%d\n", count_chars(test));
+    if (count_chars(test) == 4) { //checks for correct return value
+        //(4)
+        printf("Test case 1 passed.\n");
+    } else { //prints failed if return value is incorrect (not 4)
+        printf("Test case 1 failed.\n");
+    }
+    printf("%d\n", count_chars(test2));
+    if (count_chars(test2) == 9) {
+        printf("Test case 2 passed.\n\n");
+    } else {
+        printf("Test case 2 failed.\n\n");
+    }
+}
+
+/**
+ * This function tests the trim_right function.
+ */
+void test_trim_right() {
+    char test[] = "test ";
+    char desired[] = "test";
+    trim_right(test);
+    if (compare_arrays(test, desired, 3)) {
+        printf("Test case 1 passed.\n");
+    } else {
+        printf("Test case 1 failed.\n");
+    }
+    char test2[] = "test test  ";
+    char desired2[] = "test test ";
+    trim_right(test2);
+    if (compare_arrays(test2, desired2, 8)) {
+        printf("Test case 2 passed.\n\n");
+    } else {
+        printf("Test case 2 failed.\n\n");
+    }
+}
+
+/**
+ * This function tests the trim_left function.
+ */
+void test_trim_left() {
+    char test[] = " test";
+    char desired[] = "test";
+    trim_left(test);
+    if (compare_arrays(test, desired, 3)) {
+        printf("\nTest case 1 passed.\n");
+    } else {
+        printf("\nTest case 1 failed.\n");
+    }
+    char test2[] = " test test";
+    char desired2[] = "test test";
+    trim_left(test2);
+    if (compare_arrays(test2, desired2, 8)) {
+        printf("\nTest case 2 passed.\n\n");
+    } else {
+        printf("\nTest case 2 failed.\n\n");
+    }
+}
+
+/**
+ * This function tests the pad_right function.
+ */
+void test_pad_right() {
+    char test[] = "test";
+    char test2[] = "test";
+    char desired[] = "test  ";
+    char desired2[] = "test";
+    int n = 6;
+    int n2 = 4;
+    pad_right(test, n);
+    if (compare_arrays(test, desired, 7)) {
+        printf("\nTest case 1 passed.\n");
+    } else {
+        printf("\nTest case 1 failed.\n");
+    }
+    pad_right(test2, n2);
+    if (compare_arrays(test2, desired2, 5)) {
+        printf("\nTest case 2 passed.\n\n");
+    } else {
+        printf("\nTest case 2 failed.\n\n");
+    }
+
+}
+
+/**
+ * This function tests the pad_left function.
+ */
+void test_pad_left() {
+    char test[] = "test";
+    char test2[] = "test";
+    char desired[] = "  test";
+    char desired2[] = "test";
+    int n = 6;
+    int n2 = 4;
+    pad_left(test, n);
+    if (compare_arrays(test, desired, 7)) {
+        printf("\nTest case 1 passed.\n");
+    } else {
+        printf("\nTest case 1 failed.\n");
+    }
+    pad_left(test2, n2);
+    if (compare_arrays(test2, desired2, 5)) {
+        printf("\nTest case 2 passed.\n\n");
+    } else {
+        printf("\nTest case 2 failed.\n\n");
+    }
+
+}
+
+/**
+ * This function tests the center function.
+ */
+void test_center() {
+    char test[] = "test";
+    char test2[] = "test";
+    char desired[] = " test ";
+    char desired2[] = " test  ";
+    int n = 6;
+    int n2 = 7;
+    center(test, n);
+    if (compare_arrays(test, desired, 7)) {
+        printf("\nTest case 1 passed.\n");
+    } else {
+        printf("\nTest case 1 failed.\n");
+    }
+    center(test2, n2);
+    if (compare_arrays(test2, desired2, 8)) {
+        printf("\nTest case 2 passed.\n\n");
+    } else {
+        printf("\nTest case 2 failed.\n\n");
+    }
+
+}
+
+/**
+ * This function tests the is_palindrome function.
+ */
+void test_is_palindrome() {
+    char test[] = "RADar";
+    printf("%d", is_palindrome(test));
+    if (is_palindrome(test) == 1) {
+        printf("\nTest case 1 passed.\n\n");
+    } else {
+        printf("\nTest case 1 failed.\n\n");
+    }
+}
+
+/**
+ * This function tests the truncate function.
+ */
+void test_truncate() {
+    char test[] = "test";
+    char desired[] = "te";
+    char test2[] = "test";
+    char desired2[] = "test";
+    int n = 2;
+    int n2 = 4;
+    truncate(test, n);
+    if (compare_arrays(test, desired, 3)) {
+        printf("\nTest case 1 passed.\n");
+    } else {
+        printf("\nTest case 1 failed.\n");
+    }
+    truncate(test2, n2);
+    if (compare_arrays(test2, desired2, 5)) {
+        printf("\nTest case 2 passed.\n\n");
+    } else {
+        printf("\nTest case 2 failed.\n\n");
+    }
+}
+
+/**
+ * This function tests the capitalize function.
+ */
+void test_capitalize() {
+    char test[] = "test";
+    char desired[] = "Test";
+    capitalize(test);
+    if (compare_arrays(test, desired, 5)) {
+        printf("\nTest case 1 passed.\n\n");
+    } else {
+        printf("\nTest case 1 failed.\n\n");
+    }
+}
+
+/**
+ * This function tests the capitalize_words function.
+ */
+void test_capitalize_words() {
+    char test[] = "test test test";
+    char desired[] = "Test Test Test";
+    capitalize_words(test);
+    if (compare_arrays(test, desired, 15)) {
+        printf("\nTest case 1 passed.\n\n");
+    } else {
+        printf("\nTest case 1 failed.\n\n");
+    }
+}
+
+/**
+ * This function tests the is_alpha function.
+ */
+void test_is_alpha() {
+    char test[] = "test";
+    char test2[] = "1234";
+    printf("%d\n", is_alpha(test));
+    if (is_alpha(test) == 1) {
+        printf("Test case 1 passed.\n");
+    } else {
+        printf("Test case 1 failed.\n");
+    }
+    printf("%d\n", is_alpha(test2));
+    if (is_alpha(test2) == 0) {
+        printf("Test case 2 passed.\n\n");
+    } else {
+        printf("Test case 2 failed.\n\n");
+    }
+}
+
+/**
+ * This function tests the reverse function.
+ */
+void test_reverse() {
+    printf("Enter a string to reverse:\n");
+    char test[] = "test";
+    char desired[] = "tset";
+    reverse(test);
+    if (compare_arrays(test, desired, 4)) {
+        printf("\nTest case 1 passed.\n\n");
+    } else {
+        printf("\nTest case 1 failed.\n\n");
+    }
+}
+
+/**
+ * This function tests the count_occurrences function.
+ */
+void test_count_occurrences() {
+    char test[] = "test";
+    char c = 't';
+    printf("%d\n", count_occurrences(test, c));
+    if (count_occurrences(test, c) == 2) {
+        printf("Test case 1 passed.\n\n");
+    } else {
+        printf("Test case 1 failed.\n\n");
+    }
+}
+
+/**
+ * This function tests the delete_char function.
+ */
+void test_delete_char() {
+    char test[] = "test";
+    char c = 't'; //character to delete
+    char desired[] = "es";
+    delete_char(test, c);
+    if (compare_arrays(test, desired, 2)) {
+        printf("\nTest case 1 passed.\n\n");
+    } else {
+        printf("\nTest case 1 failed.\n\n");
+    }
+}
+
 //end main.c
