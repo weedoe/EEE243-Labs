@@ -1,36 +1,27 @@
 #include <stdio.h>
-void readWord(char *str, FILE *file);
-
+#include <ctype.h>
 int main() {
+    char buffer;
     int c = 0;
-    char buffer;
-    FILE *lorem;
-    FILE *loremupdated;
-    lorem = fopen("lorem.txt", "r");
-    loremupdated = fopen("loremupdated.txt", "w");
-    readWord(&buffer, lorem);
-    while (buffer != '\0') {
-        fwrite(&buffer, sizeof(char), 1, loremupdated);
-        readWord(&buffer, lorem);
+    FILE *lorem = fopen("lorem.txt", "r");
+    FILE *loremupdated = fopen("lorem-updated.txt", "w");
+    if (lorem == NULL) {
+        printf("Error opening file\n");
+        return -1;
     }
-
-
-
-fclose(lorem);
-
-    return 0;
-}
-
-void readWord(char *str, FILE *file) {
-    int i = 0;
-    char buffer;
-    while (fread(&buffer, sizeof(char), 1, file)) {
-        if (buffer == ' ' || buffer == '\n') {
-            str[i] = '\0';
-            return;
+    while(fread(&buffer, 1, 1, lorem) == 1) {
+        if(c == 20){
+            fprintf(loremupdated, "\n");
+            c = 0;
         }
-        str[i] = buffer;
-        i++;
+        if(islower(buffer)){
+            buffer = toupper(buffer);
+        }
+        fprintf(loremupdated, "%s", &buffer);
+        c++;
     }
-    str[i] = '\0';
+    fclose(lorem);
+    fclose(loremupdated);
 }
+
+
