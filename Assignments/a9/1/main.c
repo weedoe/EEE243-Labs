@@ -3,7 +3,7 @@ void checkPrime(int n); //function to print all prime numbers between 1 to n usi
 int main()
 {
     int n;
-    printf("Enter a positive integer: ");
+    printf("Enter the upper limit: ");
     scanf("%d",&n);
     printf("\nPrime numbers up to %d: ", n);
     checkPrime(n);
